@@ -9,6 +9,7 @@ public class MainClass {
         JFrame frame = new JFrame();
         Panel panel = new Panel();
 
+        frame.setSize(600,480);
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

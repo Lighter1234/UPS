@@ -59,6 +59,9 @@ public class Game {
             short counter = 1;
             int[] dir = this.DIRECTIONS[i];
             for (int j = 1; j < 4; j++) {   // Attempt to Connect four
+                if(column - j*dir[0] < 0 || pointer - j*dir[1] < 0){
+                    continue;
+                }
                 short numberOfPlayer = this.gameBoard[column - j*dir[0]][pointer - j*dir[1]];
                 if (possibleWinner != numberOfPlayer) {
                     continue Outer;
@@ -71,4 +74,19 @@ public class Game {
         }
         return false;
     }
+
+    /**
+     * Checks if the game has ended in draw
+     *
+     * @return true if the game is draw, false if the game can still continue
+     */
+    private boolean checkDraw(){
+        for(int i = 0 ; i < counter.length; i++){
+            if(counter[i] != SIZE_OF_BOARD + 1){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

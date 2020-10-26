@@ -19,12 +19,15 @@ public class MouseHandler implements MouseListener {
      */
     @Override
     public void mouseClicked(MouseEvent e) {
-        p.addCircle(e.getX(), e.getY(), currentPlayer);
+        if(!p.hasGameEnded()){
+            p.addCircle(e.getX(), e.getY(), currentPlayer);
+            this.currentPlayer = (currentPlayer == 1) ? (short)2 : 1;
+
+            p.repaint();
+        }
 
         System.out.println(e.getX() + " x " + e.getY() + " y ");
-        this.currentPlayer = (currentPlayer == 1) ? (short)2 : 1;
 
-        p.repaint();
     }
 
     /**

@@ -8,8 +8,8 @@ public class Game {
     private final short AMOUNT_OF_PLAYERS = 2;
     private final int[][] DIRECTIONS =
             {{-1,-1} ,/* {-1, 1} - no need to check because there's nothing above added cicle */ {1, -1},
-                    {0,-1}, {0,0}, {0,1},
-                    {-1,1},{0,1},{1,1}}; //TODO
+                    {0,-1}, {0,1},
+                    {-1,1},{0,1},{1,1}};
 
     private short[][] gameBoard = new short[SIZE_OF_BOARD][SIZE_OF_BOARD];
 
@@ -17,7 +17,7 @@ public class Game {
 
     private short state = 0; // 0 - nothing is going on , 1 - local game, 2 - online game
 
-    Player[] players = new Player[AMOUNT_OF_PLAYERS]; // More
+    private Player[] players = new Player[AMOUNT_OF_PLAYERS]; // More
 
 //    public Game(Player first, Player second){
 //
@@ -61,11 +61,11 @@ public class Game {
             for (int j = 1; j < 4; j++) {   // Attempt to Connect four
                 int stepX = j*dir[0];
                 int stepY = j*dir[1];
-                if(column - stepX > 0 || pointer - stepY > 0 ||
-                        column - stepX <= SIZE_OF_BOARD || pointer - stepY <= SIZE_OF_BOARD){
-                    continue;
+                if(column + stepX < 0 || pointer + stepY < 0 ||
+                        column + stepX >= SIZE_OF_BOARD || pointer + stepY >= SIZE_OF_BOARD){
+                    continue Outer;
                 }
-                short numberOfPlayer = this.gameBoard[column + j*dir[0]][pointer + j*dir[1]];
+                short numberOfPlayer = this.gameBoard[column + stepX][pointer + stepY];
                 if (possibleWinner != numberOfPlayer) {
                     continue Outer;
                 }

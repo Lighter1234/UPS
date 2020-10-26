@@ -1,6 +1,8 @@
 package SP;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.Arrays;
 
 public class MainClass {
@@ -14,10 +16,11 @@ public class MainClass {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 
-//        int[][] table = {{1,4,5}, {2,6,7}, {3,8,9}};
-//        for(int i = 0 ; i < table.length ; i++){
-//            System.out.println(Arrays.toString(table[i]));
-//        }
-//        System.out.println();
+        try {
+            Socket socket = new Socket("127.0.0.1", 10001);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

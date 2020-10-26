@@ -18,9 +18,15 @@ public class Panel extends JPanel {
 
     final Color[] colors = {Color.WHITE, Color.BLUE, Color.RED}; // 0 = no player, 1 = first player, 2 = second player
 
+    private boolean madeMove = false;
+
     private Player[] players;
 
     private Player player2;
+
+    private boolean gameEnded = false;
+
+    private String message;
 
     public Panel(){
         this.addMouseListener(new MouseHandler(this));
@@ -70,18 +76,29 @@ public class Panel extends JPanel {
         }
     }
 
-    public boolean addCircle(double x, double y, short player){
+    /**
+     * Adds a point
+     *
+     * @param x
+     * @param y
+     * @param player
+     * @return
+     */
+    public void addCircle(double x, double y, short player){
         for(short i = 0 ; i < this.rectangles.length ; i++){
             Rectangle2D current = this.rectangles[i];
             if(current.contains(x, y)){
                 short pointer = game.getPointer(i);
-                this.cells[i][pointer] = player;
-                this.game.addCircle(i, players[player-1]);  // player == [1, 2]
-                return true;
+//                this.cells[i][pointer] = player;
+                this.message = "<" +i +">" + "p" +player;
+
+//                boolean victory = this.game.addCircle(i, players[player-1]);  // player == [1, 2]
+//                if(victory){
+//                    this.gameEnded = true;
+//                }
             }
         }
 
-        return false;
     }
 
     private void prepareRectangles(Graphics2D g2, double part){
@@ -97,4 +114,16 @@ public class Panel extends JPanel {
         }
     }
 
+    /**
+     * Returns if the game has ended
+     *
+     * @return true if the game has ended, false if the game is on-going
+     */
+    public boolean hasGameEnded(){
+        return this.gameEnded;
+    }
+
+    public boolean hasMadeMove(){ return this.madeMove; }
+
+    public String setMessage(){ return this.message; }
 }

@@ -2,9 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5afefb17-6fdc-4ddc-9f27-9b90eb38eafe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SP/MouseHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SP/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SP/MessageReceiver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SP/MessageSender.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv04/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv04/Server.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv04/ServerTCP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv04/clientTCP.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv04/serverTCPThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv05/ReadThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv05/WriteThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/cv05/clientTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/MouseHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/Panel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MouseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Panel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +38,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1iY4F1HLKPREuvn1dJnzWwdkbA8" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -33,7 +50,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Lenovo\IdeaProjects\UPS\src\cv05" />
+      <recent name="C:\Users\Lenovo\IdeaProjects\UPS\src\cv04" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.clientTCP">
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SP.MainClass" />
       <module name="UPS" />
@@ -47,8 +70,36 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="clientTCP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cv04.clientTCP" />
+      <module name="UPS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cv04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="serverTCPThread" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cv04.serverTCPThread" />
+      <module name="UPS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cv04.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.clientTCP" />
+        <item itemvalue="Application.serverTCPThread" />
         <item itemvalue="Application.MainClass" />
       </list>
     </recent_temporary>
@@ -67,73 +118,67 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603264595320">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="137" y="39" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.768@0.0.1366.768" timestamp="1603264595320" />
     <state x="488" y="93" key="#com.intellij.ide.util.MemberChooser" timestamp="1602081913020">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1602081913020" />
-    <state width="414" height="466" key="DebuggerActiveHint" timestamp="1602146622200">
+    <state width="456" height="466" key="DebuggerActiveHint" timestamp="1602437775308">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="414" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1602146622200" />
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1602147605158">
+    <state width="456" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1602437775308" />
+    <state width="1323" height="190" key="GridCell.Tab.0.bottom" timestamp="1603271150917">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1602147605158" />
-    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1602147605158">
+    <state width="1323" height="190" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
+    <state width="1323" height="190" key="GridCell.Tab.0.center" timestamp="1603271150917">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1602147605158" />
-    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1602147605158">
+    <state width="1323" height="190" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
+    <state width="1323" height="190" key="GridCell.Tab.0.left" timestamp="1603271150917">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1602147605158" />
-    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1602147605158">
+    <state width="1323" height="190" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
+    <state width="1323" height="190" key="GridCell.Tab.0.right" timestamp="1603271150917">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1602147605158" />
-    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1602146646702">
+    <state width="1323" height="190" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1602442024648">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1602146646702" />
-    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1602146646702">
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
+    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1602442024648">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1602146646702" />
-    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1602146646702">
+    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
+    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1602442024646">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1602146646702" />
-    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1602146646702">
+    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1602442024646" />
+    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1602442024648">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1602146646702" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1602143485617">
+    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1603712334146">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1602143485617" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1603712334146" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SP/Panel.java</url>
-          <line>57</line>
+          <line>63</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SP/Panel.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SP/Game.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/SP/MouseHandler.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="9" />
+          <line>60</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

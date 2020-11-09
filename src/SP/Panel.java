@@ -8,7 +8,8 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 public class Panel extends JPanel {
-    final short SIZE_OF_BOARD = 10;
+    private final short SIZE_OF_BOARD = 10;
+    private final short SIZE_OF_MESSAGE = 10;
 
     private Game game;
 
@@ -18,11 +19,11 @@ public class Panel extends JPanel {
 
     final Color[] colors = {Color.WHITE, Color.BLUE, Color.RED}; // 0 = no player, 1 = first player, 2 = second player
 
-    private boolean madeMove = false;
+    private boolean messageReady = false;
 
     private Player[] players;
 
-    private Player player2;
+    private Player player;
 
     private boolean gameEnded = false;
 
@@ -46,14 +47,6 @@ public class Panel extends JPanel {
         final short AMOUNT_OF_COLUMNS = 12; // 10 (size of board) + 1 from each side
         double part = this.getWidth() / (double) SIZE_OF_BOARD;
         double partHeight = this.getHeight() / (double) SIZE_OF_BOARD;
-
-//        for(int i = 0 ; i < 1 ; i++){
-//            g2.setColor(this.colors[(i+1)%3]);
-//            Rectangle2D rect = new Rectangle2D.Double(i*part, 0.0,(i+1)*part, this.getHeight());
-//            this.rectangles[i] = rect;
-//            g2.fill(rect);
-////            g2.draw(new Line2D.Double(0.0, (i)*partHeight, this.getWidth(), (i)*partHeight));
-//        }
 
         this.prepareRectangles(g2, part);
 
@@ -90,7 +83,8 @@ public class Panel extends JPanel {
             if(current.contains(x, y)){
                 short pointer = game.getPointer(i);
 //                this.cells[i][pointer] = player;
-                this.message = "<" +i +">" + "p" +player;
+                this.prepareMoveMessage(i);
+      //          this.message = "<" +i +">" + "p" +player;
 
 //                boolean victory = this.game.addCircle(i, players[player-1]);  // player == [1, 2]
 //                if(victory){
@@ -123,7 +117,17 @@ public class Panel extends JPanel {
         return this.gameEnded;
     }
 
-    public boolean hasMadeMove(){ return this.madeMove; }
+    public boolean messageReady(){ return this.messageReady; }
 
-    public String setMessage(){ return this.message; }
+    public String getMessage(){ return this.message; }
+
+    public void prepareMoveMessage(int i){
+        this.message = "plid" + this.player.getNumber() + "move" + i + SIZE_OF_MESSAGE ;
+
+        this.messageReady = true;
+    }
+
+    public void messageSent(){
+        this.messageReady = false;
+    }
 }

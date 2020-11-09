@@ -1,8 +1,6 @@
 package cv04;
 
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.lang.ClassNotFoundException;
 import java.lang.Runnable;
 import java.lang.Thread;
@@ -57,37 +55,33 @@ class serverTCPThreadWork extends Thread
 		InetAddress adresa = socket.getInetAddress();
 		System.out.print("Pripojil se klient z: "+adresa.getHostAddress()+"/"+adresa.getHostName()+"\n" );
 
-		ObjectInputStream ois = null;
+		BufferedReader ois = null;
 		String message;
-		ObjectOutputStream oos = null;
+		OutputStream oos = null;
 		try
 		{
-			ois = new ObjectInputStream(socket.getInputStream());
-			message = (String) ois.readObject();
-			oos = new ObjectOutputStream(socket.getOutputStream());
+			ois = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+			message = ois.readLine();
+			oos = socket.getOutputStream();
 
            		while(true){
 					System.out.print("Prijimam zpravu " + message);
 
-
-
 					if(message.equals("HELLO")){
-						oos.writeObject("NUM:"+ random);
+						String s = "NUM:"+ random;
+						oos.write(s.getBytes());
 						while(true){
-							String num = (String) ois.readObject();
+							String num = ois.readLine();
 							if(Integer.parseInt(num) == random*2){
-								oos.writeObject("OK");
+								oos.write("OK".getBytes());
 							}else{
-								oos.writeObject("WRONG");
+								oos.write("WRONG".getBytes());
 							}
 							break;
-
-
 						}
 
 					}else{
-						oos.writeObject("ERROR");
-
+						oos.write("ERROR".getBytes());
 					}
 					System.out.println("Message Received: " + message);
 					ois.close();
@@ -99,7 +93,7 @@ class serverTCPThreadWork extends Thread
 		}
 		catch(NumberFormatException e){
 			try {
-				oos.writeObject("ERROR");
+				oos.write("ERROR".getBytes());
 				ois.close();
 				oos.close();
 				socket.close();

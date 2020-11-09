@@ -19,14 +19,15 @@ public class WriteThread extends Thread {
 
     @Override
     public void run() {
-
-        String sentence;
+        System.out.println("Starting input:");
+        String sentence = "";
         ObjectOutputStream oos = null;
         try {
             oos = new ObjectOutputStream(socket.getOutputStream());
-
             while((sentence = br.readLine()) != "\n"){
-                    oos.writeObject(sentence);
+                String str = prepareChatHeader(sentence);
+                System.out.println(str);
+                    oos.write(str.getBytes("UTF-8"));
             }
 
             oos.close();
@@ -35,5 +36,22 @@ public class WriteThread extends Thread {
             e.printStackTrace();
         }
 
+    }
+
+
+    private String prepareChatHeader(String str){
+        int length = str.length();
+        String ln = "";
+        String lengthOf;
+        if(length < 10){
+            lengthOf = "000" + (length + 2);
+            ln = "0" + length;
+        }else if(length < 100){
+            lengthOf = "0" + (length+2);
+        }else{
+            lengthOf = (length + 3)+"";
+        }
+
+        return "KIVUPSnick" +  "" + "" + lengthOf  +""+ ln + str;
     }
 }

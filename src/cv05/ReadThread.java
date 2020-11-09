@@ -19,7 +19,6 @@ public class ReadThread extends Thread {
         try {
             ois = new ObjectInputStream(socket.getInputStream());
             while((message =  (String) ois.readObject()) != "\n"){
-
                 System.out.println("Message Received: " + message);
             }
             ois.close();

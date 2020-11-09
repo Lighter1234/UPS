@@ -2,25 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5afefb17-6fdc-4ddc-9f27-9b90eb38eafe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/SP/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SP/MessageReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/SP/MessageSender.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv04/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv04/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv04/ServerTCP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv04/clientTCP.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv04/serverTCPThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv05/ReadThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv05/WriteThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cv05/clientTCP.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/MainClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/MainClass.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/MouseHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/MouseHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/Panel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/Panel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SP/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/UPS/cv04/serverTCPThreadWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/cv04/serverTCPThreadWork.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SP/MouseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MouseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MessageReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/MessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Panel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cv04/serverTCPThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cv04/serverTCPThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cv05/ReadThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cv05/ReadThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cv05/WriteThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cv05/WriteThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cv05/clientTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cv05/clientTCP.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +44,9 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -56,13 +54,26 @@
       <recent name="C:\Users\Lenovo\IdeaProjects\UPS\src\cv04" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.clientTCP">
+  <component name="RunManager" selected="Application.MainClass">
     <configuration name="MainClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SP.MainClass" />
       <module name="UPS" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="SP.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="clientTCP (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cv05.clientTCP" />
+      <module name="UPS" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cv05.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -98,9 +109,10 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MainClass" />
+        <item itemvalue="Application.clientTCP (1)" />
         <item itemvalue="Application.clientTCP" />
         <item itemvalue="Application.serverTCPThread" />
-        <item itemvalue="Application.MainClass" />
       </list>
     </recent_temporary>
   </component>
@@ -126,59 +138,77 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="488" y="93" key="#com.intellij.ide.util.MemberChooser/0.0.1366.768@0.0.1366.768" timestamp="1602081913020" />
-    <state width="456" height="466" key="DebuggerActiveHint" timestamp="1602437775308">
+    <state width="456" height="466" key="DebuggerActiveHint" timestamp="1603811350286">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="456" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1602437775308" />
-    <state width="1323" height="190" key="GridCell.Tab.0.bottom" timestamp="1603271150917">
+    <state width="456" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1603811350286" />
+    <state width="1323" height="230" key="GridCell.Tab.0.bottom" timestamp="1604866259085">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="190" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
-    <state width="1323" height="190" key="GridCell.Tab.0.center" timestamp="1603271150917">
+    <state width="1323" height="230" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604866259085" />
+    <state width="1323" height="230" key="GridCell.Tab.0.center" timestamp="1604866259080">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="190" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
-    <state width="1323" height="190" key="GridCell.Tab.0.left" timestamp="1603271150917">
+    <state width="1323" height="230" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1604866259080" />
+    <state width="1323" height="230" key="GridCell.Tab.0.left" timestamp="1604866259080">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="190" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
-    <state width="1323" height="190" key="GridCell.Tab.0.right" timestamp="1603271150917">
+    <state width="1323" height="230" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1604866259080" />
+    <state width="1323" height="230" key="GridCell.Tab.0.right" timestamp="1604866259080">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="190" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1603271150917" />
-    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1602442024648">
+    <state width="1323" height="230" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1604866259080" />
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1604832206360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
-    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1602442024648">
+    <state width="1323" height="238" key="GridCell.Tab.1.bottom/0.0.1366.768@0.0.1366.768" timestamp="1604832206360" />
+    <state width="1323" height="238" key="GridCell.Tab.1.center" timestamp="1604832206360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
-    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1602442024646">
+    <state width="1323" height="238" key="GridCell.Tab.1.center/0.0.1366.768@0.0.1366.768" timestamp="1604832206360" />
+    <state width="1323" height="238" key="GridCell.Tab.1.left" timestamp="1604832206360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1602442024646" />
-    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1602442024648">
+    <state width="1323" height="238" key="GridCell.Tab.1.left/0.0.1366.768@0.0.1366.768" timestamp="1604832206360" />
+    <state width="1323" height="238" key="GridCell.Tab.1.right" timestamp="1604832206360">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1602442024648" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1603712334146">
+    <state width="1323" height="238" key="GridCell.Tab.1.right/0.0.1366.768@0.0.1366.768" timestamp="1604832206360" />
+    <state x="163" y="0" key="SettingsEditor" timestamp="1604829469884">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1603712334146" />
+    <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1604829469884" />
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1604862972538">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1604862972538" />
+    <state x="65" y="4" key="new project wizard" timestamp="1604062959252">
+      <screen x="0" y="0" width="1366" height="768" />
+    </state>
+    <state x="65" y="4" key="new project wizard/0.0.1366.768@0.0.1366.768" timestamp="1604062959252" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SP/Panel.java</url>
-          <line>63</line>
+          <line>56</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/SP/Game.java</url>
           <line>60</line>
           <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SP/MainClass.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SP/MainClass.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

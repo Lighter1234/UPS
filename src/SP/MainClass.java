@@ -2,6 +2,7 @@ package SP;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Arrays;
 
@@ -14,11 +15,19 @@ public class MainClass {
         frame.setSize(600,480);
         frame.add(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+       // frame.setVisible(true);
+
 
         try {
-            Socket socket = new Socket("127.0.0.1", 10001);
-        } catch (IOException e) {
+            Socket socket = new Socket("147.228.63.10", 10000);
+            MessageSender ms = new MessageSender(socket, panel, new Game());
+            MessageReceiver mr = new MessageReceiver(socket, panel, new Game());
+            ms.start();
+            mr.start();
+            ms.join();
+            mr.join();
+            socket.close();
+        } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
 

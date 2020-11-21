@@ -1,6 +1,7 @@
 package SP;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -11,11 +12,11 @@ public class MainClass {
     public static void main(String[] args){
         JFrame frame = new JFrame();
         Panel panel = new Panel();
-
+        frame.setLayout(new BorderLayout());
         frame.setSize(600,480);
-        frame.add(panel);
+        frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-       // frame.setVisible(true);
+        frame.setVisible(true);
 
 
         try {

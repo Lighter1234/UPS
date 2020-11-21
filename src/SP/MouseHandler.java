@@ -6,8 +6,6 @@ import java.awt.event.MouseListener;
 public class MouseHandler implements MouseListener {
     Panel p;
 
-    private short currentPlayer = 1; // First player
-
     public MouseHandler(Panel p){
         this.p = p;
     }
@@ -20,13 +18,10 @@ public class MouseHandler implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if(!p.hasGameEnded()){
-            p.addCircle(e.getX(), e.getY(), currentPlayer);
-            this.currentPlayer = (currentPlayer == 1) ? (short)2 : 1;
+            p.makeMove(e.getX(), e.getY());
 
             p.repaint();
         }
-
-        System.out.println(e.getX() + " x " + e.getY() + " y ");
 
     }
 

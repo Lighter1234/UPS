@@ -14,14 +14,12 @@ public class Panel extends JPanel {
     private Game game;
 
     private Rectangle2D[] rectangles = new Rectangle2D[SIZE_OF_BOARD];
-
+    private short[] pointers = new short[SIZE_OF_BOARD];
     private short[][] cells = new short[SIZE_OF_BOARD][SIZE_OF_BOARD];
 
     final Color[] colors = {Color.WHITE, Color.BLUE, Color.RED}; // 0 = no player, 1 = first player, 2 = second player
 
     private boolean messageReady = false;
-
-    private Player[] players;
 
     private Player player;
 
@@ -29,11 +27,10 @@ public class Panel extends JPanel {
 
     private String message;
 
+    private int id;
+
     public Panel(){
         this.addMouseListener(new MouseHandler(this));
-        this.players = new Player[] {new Player("", (short)1), new Player("", (short)2)};
-        game = new Game();
-
     }
 
     @Override
@@ -74,25 +71,32 @@ public class Panel extends JPanel {
      *
      * @param x
      * @param y
-     * @param player
      * @return
      */
-    public void addCircle(double x, double y, short player){
+    public void addCircle(int x, int y){
+//        for(short i = 0 ; i < this.rectangles.length ; i++){
+//            Rectangle2D current = this.rectangles[i];
+//            if(current.contains(x, y)){
+//                short pointer = game.getPointer(i);
+//                this.prepareMoveMessage(i, i);
+//            }
+//        }
+        this.pointers[x] += 1;
+        this.cells[x][y] = 1;
+    }
+
+    public void makeMove(double x, double y){
         for(short i = 0 ; i < this.rectangles.length ; i++){
             Rectangle2D current = this.rectangles[i];
             if(current.contains(x, y)){
-                short pointer = game.getPointer(i);
-//                this.cells[i][pointer] = player;
-                this.prepareMoveMessage(i);
-      //          this.message = "<" +i +">" + "p" +player;
-
-//                boolean victory = this.game.addCircle(i, players[player-1]);  // player == [1, 2]
-//                if(victory){
-//                    this.gameEnded = true;
-//                }
+                this.prepareMoveMessage(i, this.getPointer(i));
+                return;
             }
         }
+    }
 
+    private short getPointer(int x){
+        return this.pointers[x];
     }
 
     private void prepareRectangles(Graphics2D g2, double part){
@@ -117,17 +121,29 @@ public class Panel extends JPanel {
         return this.gameEnded;
     }
 
-    public boolean messageReady(){ return this.messageReady; }
+    public boolean isMessageReady(){
+        return this.messageReady;
+    }
 
     public String getMessage(){ return this.message; }
 
-    public void prepareMoveMessage(int i){
-        this.message = "plid" + this.player.getNumber() + "move" + i + SIZE_OF_MESSAGE ;
+    public void prepareMoveMessage(int x, int y){
+        this.message = "move|"  +  x + "," + y + "|" + /*this.getId()*/0;
+        System.out.println("Message prepared!" + this.messageReady + " Message: " + this.message);
 
         this.messageReady = true;
+
     }
 
     public void messageSent(){
         this.messageReady = false;
+    }
+
+    public int getId(){
+        return this.id;
+    }
+
+    public void setId(int id){
+        this.id = id;
     }
 }

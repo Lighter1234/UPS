@@ -27,15 +27,15 @@ public class MessageSender extends Thread {
 
 
         while(socket.isConnected()){
-//            if(checkMessage()){
-//                System.out.println("Here");
-//                    System.out.println("Sending message: " + panel.getMessage());
-//                    oos.write(panel.getMessage().getBytes());
-//                    panel.messageSent();
-//            }
-            message = "move|"+br.readLine()+ "|" +panel.getId();
-            System.out.println("Sending: " + message);
-            oos.write(message.getBytes());
+            if(checkMessage()){
+                System.out.println("Here");
+                    System.out.println("Sending message: " + panel.getMessage());
+                    oos.write(panel.getMessage().getMessage().getBytes());
+                    panel.messageSent();
+            }
+//            message = "move|"+br.readLine()+ "|" +panel.getId();
+//            System.out.println("Sending: " + message);
+//            oos.write(message.getBytes());
         }
 
         } catch (IOException e) {
@@ -43,7 +43,7 @@ public class MessageSender extends Thread {
         }
     }
 
-    public boolean checkMessage(){
+    public synchronized boolean checkMessage(){
         return this.panel.isMessageReady();
     }
 

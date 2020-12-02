@@ -25,7 +25,7 @@ public class Panel extends JPanel {
 
     private boolean gameEnded = false;
 
-    private String message;
+    private Message message;
 
     private int id;
 
@@ -85,6 +85,18 @@ public class Panel extends JPanel {
         this.cells[x][y] = 1;
     }
 
+    public void addCircleFromOponent(int x, int y){
+//        for(short i = 0 ; i < this.rectangles.length ; i++){
+//            Rectangle2D current = this.rectangles[i];
+//            if(current.contains(x, y)){
+//                short pointer = game.getPointer(i);
+//                this.prepareMoveMessage(i, i);
+//            }
+//        }
+        this.pointers[x] += 1;
+        this.cells[x][y] = 2;
+    }
+
     public void makeMove(double x, double y){
         for(short i = 0 ; i < this.rectangles.length ; i++){
             Rectangle2D current = this.rectangles[i];
@@ -121,22 +133,28 @@ public class Panel extends JPanel {
         return this.gameEnded;
     }
 
-    public boolean isMessageReady(){
+    public synchronized boolean isMessageReady(){
         return this.messageReady;
     }
 
-    public String getMessage(){ return this.message; }
+    public synchronized Message getMessage(){ return this.message; }
 
     public void prepareMoveMessage(int x, int y){
-        this.message = "move|"  +  x + "," + y + "|" + /*this.getId()*/0;
-        System.out.println("Message prepared!" + this.messageReady + " Message: " + this.message);
-
-        this.messageReady = true;
-
+        if(!messageReady) {
+            String s = "move|" + x + "," + y + "|" + /*this.getId()*/0;
+            this.message = new Message(s, s.length());
+          /*  System.out.println("Message prepared!" + this.messageReady + " Message: " + this.message);
+*/
+            this.messageReady = true;
+        }
     }
 
     public void messageSent(){
         this.messageReady = false;
+    }
+
+    public void messageReceived(){
+        this.message = null;
     }
 
     public int getId(){

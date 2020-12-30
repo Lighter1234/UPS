@@ -2,10 +2,8 @@ package SP;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.Socket;
-import java.util.Arrays;
 
 public class MessageReceiver extends Thread{
 
@@ -17,6 +15,12 @@ public class MessageReceiver extends Thread{
         this.socket = socket;
         this.panel = panel;
         this.game = game;
+    }
+
+    public MessageReceiver(Socket socket, Panel panel){
+        this.socket = socket;
+        this.panel = panel;
+        this.game = null;
     }
 
     public void run(){
@@ -54,7 +58,14 @@ public class MessageReceiver extends Thread{
                     }
                     if(splitted[0].contains("305")){
                         String s[] = message.split("\\|")[1].split(",");
-                        panel.addCircleFromOponent(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
+                        panel.addCircleFromOpponent(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
+                        panel.repaint();
+                    }
+                    if(splitted[0].contains("300")){
+                        String s[] = message.split("\\|")[1].split(",");
+                        panel.setGameId(Integer.parseInt(s[0]));
+                        panel.setId(Integer.parseInt(s[2]));
+                        panel.gameFound();
                         panel.repaint();
                     }
                 }

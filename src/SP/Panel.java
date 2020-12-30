@@ -1,7 +1,5 @@
 package SP;
 
-import org.w3c.dom.events.MouseEvent;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
@@ -24,10 +22,14 @@ public class Panel extends JPanel {
     private Player player;
 
     private boolean gameEnded = false;
+    private boolean gameFound = false;
 
     private Message message;
 
     private int id;
+    private int gameId;
+
+    private boolean disconnected = false;
 
     public Panel(){
         this.addMouseListener(new MouseHandler(this));
@@ -35,8 +37,10 @@ public class Panel extends JPanel {
 
     @Override
     public void paintComponent(Graphics g){
+        super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGameBoard(g2);
+        System.out.println("Panel");
     }
 
 
@@ -75,17 +79,17 @@ public class Panel extends JPanel {
      */
     public void addCircle(int x, int y){
 //        for(short i = 0 ; i < this.rectangles.length ; i++){
-//            Rectangle2D current = this.rectangles[i];
-//            if(current.contains(x, y)){
-//                short pointer = game.getPointer(i);
-//                this.prepareMoveMessage(i, i);
-//            }
-//        }
+////            Rectangle2D current = this.rectangles[i];
+////            if(current.contains(x, y)){
+////                short pointer = game.getPointer(i);
+////                this.prepareMoveMessage(i, i);
+////            }
+////        }
         this.pointers[x] += 1;
         this.cells[x][y] = 1;
     }
 
-    public void addCircleFromOponent(int x, int y){
+    public void addCircleFromOpponent(int x, int y){
 //        for(short i = 0 ; i < this.rectangles.length ; i++){
 //            Rectangle2D current = this.rectangles[i];
 //            if(current.contains(x, y)){
@@ -157,11 +161,31 @@ public class Panel extends JPanel {
         this.message = null;
     }
 
+    public int getGameId(){
+        return this.gameId;
+    }
+
+    public void setGameId(int id){
+        this.gameId = id;
+    }
+
     public int getId(){
         return this.id;
     }
 
     public void setId(int id){
         this.id = id;
+    }
+
+    public synchronized void gameFound(){ this.gameFound = true; }
+
+    public synchronized boolean hasGameBeenFound(){ return this.gameFound; }
+
+    public synchronized boolean isDisconnected(){
+        return this.disconnected;
+    }
+
+    public synchronized void setDisconnectedFlag() {
+        this.disconnected = true;
     }
 }

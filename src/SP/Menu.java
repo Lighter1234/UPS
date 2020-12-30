@@ -83,6 +83,7 @@ public class Menu extends JPanel {
         this.mode = MENU_MODE;
         this.remove(tf);
         this.remove(mb);
+        this.remove(cb);
 //        mb = null;
 
 //        gb = new GameButton(this);
@@ -105,7 +106,6 @@ public class Menu extends JPanel {
 //            e.printStackTrace();
 //        }
 
-
         //TODO CONNECTION
         frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -126,8 +126,8 @@ public class Menu extends JPanel {
                 }
             }
         });
-
-        PanelThread pt = new PanelThread(address, port, frame, this);
+        System.out.println("Name: "+ name);
+        PanelThread pt = new PanelThread(address, port, frame, this, name);
         pt.start();
 
         // Game running

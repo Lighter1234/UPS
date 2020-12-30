@@ -40,34 +40,12 @@ public class MessageReceiver extends Thread{
                     System.out.println(message.trim());
                     splitted = message.split("\\|");
 //                    System.out.println(Arrays.toString(splitted[0]));
-                    for(int i = 0 ; splitted.length > i  ; i++)
-                        System.out.println(  "Splitted"  + i + " [" + splitted[i] + "]");
+                    for(int i = 0 ; splitted.length > i  ; i++) {
+                        System.out.println("Splitted" + i + " [" + splitted[i] + "]");
+                    }
 
-                    if(splitted[0].equals("205")){
-                        System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
-                        panel.setId(Integer.parseInt(splitted[1]));
-                    }
-                    if(splitted[0].contains("200")){
-                        mes = panel.getMessage();
-                        System.out.println("Accepted message:" + mes.getMessage());
-                        String s[] = mes.getMessage().split("\\|")[1].split(",");
-                        panel.addCircle(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
-                        panel.repaint();
+                    handleMessage(splitted);
 
-                        panel.messageReceived();
-                    }
-                    if(splitted[0].contains("305")){
-                        String s[] = message.split("\\|")[1].split(",");
-                        panel.addCircleFromOpponent(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
-                        panel.repaint();
-                    }
-                    if(splitted[0].contains("300")){
-                        String s[] = message.split("\\|")[1].split(",");
-                        panel.setGameId(Integer.parseInt(s[0]));
-                        panel.setId(Integer.parseInt(s[2]));
-                        panel.gameFound();
-                        panel.repaint();
-                    }
                 }
             }
         }catch(IOException e){
@@ -76,8 +54,31 @@ public class MessageReceiver extends Thread{
 
     }
 
-    public void handleMessage(String message){
-        
+    public void handleMessage(String[] splitted){
+        String[] mes;
+        if(splitted[0].equals("205")){
+            System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
+            panel.setId(Integer.parseInt(splitted[1]));
+        }
+        if(splitted[0].contains("200")){
+            mes = panel.getMessage().split("\\|");
+//            System.out.println("Accepted message:" + mes.getMessage());
+            String s[] = mes[1].split(",");
+            panel.addCircle(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
+            panel.repaint();
+
+            panel.messageReceived();
+        }
+        if(splitted[0].contains("305")){
+            String s[] = splitted[1].split(",");
+            panel.addCircleFromOpponent(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
+            panel.repaint();
+        }
+        if(splitted[0].contains("300")){
+            panel.setGameId(Integer.parseInt(splitted[2]));
+            panel.gameFound();
+            panel.repaint();
+        }
     }
 
 }

@@ -14,6 +14,7 @@ public class PanelThread extends Thread {
 
     private Panel panel;
     private Socket socket;
+    private String name;
 
     private MessageSender ms;
     private MessageReceiver mr;
@@ -22,41 +23,50 @@ public class PanelThread extends Thread {
     private JFrame frame;
     private Menu menu;
 
-    public PanelThread(String address, int port, JFrame frame, Menu menu){
+    public PanelThread(String address, int port, JFrame frame, Menu menu, String name){
         this.address = address;
         this.port = port;
         this.frame = frame;
         this.menu = menu;
-    }
+        this.name = name;
 
 
-    @Override
-    public void run() {
-        JLabel jl = new JLabel("Game is searching");
-        jl.setSize(new Dimension(640, 480));
-        frame.add(jl, BorderLayout.CENTER);
-
-        Panel panel = new Panel();
-        System.out.println("Before");
-        while(!panel.hasGameBeenFound()){
-            //wait
-        }
-        System.out.println("After");
         try {
             socket = new Socket(address, port);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+
+        ms = new MessageSender(socket);
+        this.panel = new Panel(ms);
+
         mr = new MessageReceiver(socket, panel);
-        ms = new MessageSender(socket, panel);
-        cc = new ConnectionChecker(socket, panel);
-
         mr.start();
+        cc = new ConnectionChecker(socket, panel, ms);
+
+
+    }
+
+
+    @Override
+    public void run() {
+        ms.sendMessage("connect|0|" + name);
+        JLabel jl = new JLabel("Game is searching");
+        jl.setSize(new Dimension(640, 480));
+        frame.add(jl, BorderLayout.CENTER);
+
+        System.out.println("Before");
+        while(!panel.hasGameBeenFound()){
+            //wait
+        }
+        System.out.println("After");
+
+
+
         cc.start();
-
+        frame.remove(jl);
         frame.add(panel, BorderLayout.CENTER);
-
 
         menu.setGameStartedFlag();
 

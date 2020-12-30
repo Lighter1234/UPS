@@ -6,10 +6,14 @@ public class ConnectionChecker extends Thread {
 
     private Socket socket;
     private Panel panel;
+    private MessageSender ms;
 
-    public ConnectionChecker(Socket socket, Panel panel){
+    private final long TEN_SECONDS = 10000;
+
+    public ConnectionChecker(Socket socket, Panel panel, MessageSender ms){
         this.socket = socket;
         this.panel = panel;
+        this.ms = ms;
     }
 
 
@@ -19,9 +23,15 @@ public class ConnectionChecker extends Thread {
             if(!socket.isConnected()){
                 this.panel.setDisconnectedFlag();
                 System.out.println("Server connection ran out!");
-                break;
+                return;
             }
 
+            ms.sendMessage(panel.getId() + "|PING");
+            try {
+                this.sleep(TEN_SECONDS);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
     }

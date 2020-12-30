@@ -15,19 +15,19 @@ public class MessageSender{
         this.panel = panel;
         this.game = game;
         try {
-            OutputStream oos = socket.getOutputStream();
+            this.oos = socket.getOutputStream();
         } catch (IOException e) {
             System.out.println("Error while initializing socket output stream!");
         }
 
     }
 
-    public MessageSender(Socket socket, Panel panel){
+    public MessageSender(Socket socket){
         this.socket = socket;
-        this.panel = panel;
+//        this.panel = panel;
         this.game = null;
         try {
-            OutputStream oos = socket.getOutputStream();
+            this.oos = socket.getOutputStream();
         } catch (IOException e) {
             System.out.println("Error while initializing socket output stream!");
         }
@@ -39,11 +39,15 @@ public class MessageSender{
     }
 
     public synchronized boolean sendMessage(String message){
-        if(this.panel.isDisconnected()){
+//        if(this.panel.isDisconnected()){
+//            return false;
+//        }
 
-            return false;
+        try {
+            oos.write(message.getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
 
 
 

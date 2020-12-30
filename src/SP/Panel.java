@@ -24,14 +24,18 @@ public class Panel extends JPanel {
     private boolean gameEnded = false;
     private boolean gameFound = false;
 
-    private Message message;
+//    private Message message;
 
+    private String message;
     private int id;
     private int gameId;
 
     private boolean disconnected = false;
 
-    public Panel(){
+    private MessageSender ms;
+
+    public Panel(MessageSender ms){
+        this.ms = ms;
         this.addMouseListener(new MouseHandler(this));
     }
 
@@ -141,15 +145,18 @@ public class Panel extends JPanel {
         return this.messageReady;
     }
 
-    public synchronized Message getMessage(){ return this.message; }
+//    public synchronized Message getMessage(){ return this.message; }
+    public synchronized String getMessage(){ return this.message; }
 
     public void prepareMoveMessage(int x, int y){
         if(!messageReady) {
             String s = "move|" + x + "," + y + "|" + /*this.getId()*/0;
-            this.message = new Message(s, s.length());
+//            this.message = new Message(s, s.length());
           /*  System.out.println("Message prepared!" + this.messageReady + " Message: " + this.message);
 */
-            this.messageReady = true;
+            this.message = s;
+            ms.sendMessage(s);
+//            this.messageReady = true;
         }
     }
 
@@ -177,7 +184,8 @@ public class Panel extends JPanel {
         this.id = id;
     }
 
-    public synchronized void gameFound(){ this.gameFound = true; }
+    public synchronized void gameFound(){ this.gameFound = true;
+        System.out.println("Game found!"); }
 
     public synchronized boolean hasGameBeenFound(){ return this.gameFound; }
 

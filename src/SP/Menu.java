@@ -30,6 +30,10 @@ public class Menu extends JPanel {
     private String address;
     private int port;
 
+    private boolean playerInitialized = false;
+    private boolean nameIncorrect = false;
+    private boolean nameChecked = false;
+
     public Menu(String address, int port){
         this.address = address;
         this.port = port;
@@ -99,6 +103,7 @@ public class Menu extends JPanel {
             tf.setText("Incorrect name!");
             return;
         }
+        this.resetNameChecking();
 
 //        try {
 //            socket = new Socket(this.address, this.port);
@@ -107,25 +112,7 @@ public class Menu extends JPanel {
 //        }
 
         //TODO CONNECTION
-        frame = new JFrame();
-        frame.setLayout(new BorderLayout());
-        frame.setSize(600,480);
-//        frame.add(panel, BorderLayout.CENTER);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setVisible(true);
-        frame.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent windowEvent) {
-                if (JOptionPane.showConfirmDialog(frame,
-                        "Are you sure you want to close this window and disconnect from the game?",
-                        "Close Window?",
-                        JOptionPane.YES_NO_OPTION,
-                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    panel = null; frame = null; socket = null;
-                    mode = GAME_MODE;
-                }
-            }
-        });
+
         System.out.println("Name: "+ name);
         PanelThread pt = new PanelThread(address, port, frame, this, name);
         pt.start();
@@ -140,5 +127,34 @@ public class Menu extends JPanel {
 
     public void setGameStartedFlag(){
         this.mode = GAME_RUNNING;
+    }
+
+    public synchronized boolean isPlayerInitialized(){
+        return this.playerInitialized;
+    }
+
+    public synchronized void setPlayerInitialized(){
+        this.playerInitialized = true;
+    }
+
+    public synchronized boolean wasNameIncorrect(){
+        return this.nameIncorrect;
+    }
+
+    public synchronized boolean wasNameChecked(){ return this.nameChecked; }
+
+    public synchronized void setNameChecked(){
+        this.nameChecked = true;
+    }
+
+    public synchronized void resetNameChecking(){
+        this.nameChecked = false;
+        this.nameIncorrect = false;
+    }
+
+    public synchronized void setNameIncorrect(){
+        System.out.println("Name is incorrect!");
+        this.nameIncorrect = true;
+
     }
 }

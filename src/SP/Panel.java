@@ -34,6 +34,7 @@ public class Panel extends JPanel {
 
     private MessageSender ms;
 
+
     public Panel(MessageSender ms){
         this.ms = ms;
         this.addMouseListener(new MouseHandler(this));
@@ -196,4 +197,6 @@ public class Panel extends JPanel {
     public synchronized void setDisconnectedFlag() {
         this.disconnected = true;
     }
+
+
 }

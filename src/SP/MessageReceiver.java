@@ -1,5 +1,6 @@
 package SP;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -10,6 +11,7 @@ public class MessageReceiver extends Thread{
     private Socket socket;
     private Panel panel;
     private Game game;
+    private Menu menu;
 
     public MessageReceiver(Socket socket, Panel panel, Game game){
         this.socket = socket;
@@ -17,10 +19,11 @@ public class MessageReceiver extends Thread{
         this.game = game;
     }
 
-    public MessageReceiver(Socket socket, Panel panel){
+    public MessageReceiver(Socket socket, Panel panel, Menu menu){
         this.socket = socket;
         this.panel = panel;
         this.game = null;
+        this.menu = menu;
     }
 
     public void run(){
@@ -59,6 +62,13 @@ public class MessageReceiver extends Thread{
         if(splitted[0].equals("205")){
             System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
             panel.setId(Integer.parseInt(splitted[1]));
+            menu.setPlayerInitialized();
+            menu.setNameChecked();
+        }
+        if(splitted[0].contains("-411")){
+            System.out.println("Name was incorrect!");
+            menu.setNameIncorrect();
+            menu.setNameChecked();
         }
         if(splitted[0].contains("200")){
             mes = panel.getMessage().split("\\|");
@@ -78,6 +88,17 @@ public class MessageReceiver extends Thread{
             panel.setGameId(Integer.parseInt(splitted[2]));
             panel.gameFound();
             panel.repaint();
+        }
+
+        if(splitted[0].contains("201")){
+            Object[] options = {"OK"};
+            int n = JOptionPane.showOptionDialog(panel,
+                    "Message here ","Title",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
         }
     }
 

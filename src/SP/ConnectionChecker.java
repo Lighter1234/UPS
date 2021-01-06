@@ -19,21 +19,21 @@ public class ConnectionChecker extends Thread {
 
     @Override
     public void run(){
-        while(true){
-            if(!socket.isConnected()){
-                this.panel.setDisconnectedFlag();
-                System.out.println("Server connection ran out!");
-                return;
-            }
-
-            ms.sendMessage(panel.getId() + "|PING");
-            try {
-                this.sleep(TEN_SECONDS);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-
-        }
+//        while(true){
+//            if(!socket.isConnected()){
+//                this.panel.setDisconnectedFlag();
+//                System.out.println("Server connection ran out!");
+//                return;
+//            }
+//
+//            ms.sendMessage(panel.getId() + "|PING");
+//            try {
+//                this.sleep(TEN_SECONDS);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
     }
 
 

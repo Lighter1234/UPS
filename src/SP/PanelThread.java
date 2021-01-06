@@ -41,7 +41,7 @@ public class PanelThread extends Thread {
         ms = new MessageSender(socket);
         this.panel = new Panel(ms);
 
-        mr = new MessageReceiver(socket, panel);
+        mr = new MessageReceiver(socket, panel, menu);
         mr.start();
         cc = new ConnectionChecker(socket, panel, ms);
 
@@ -52,6 +52,35 @@ public class PanelThread extends Thread {
     @Override
     public void run() {
         ms.sendMessage("connect|0|" + name);
+        //TODO same name
+        System.out.println("Sent message");
+        while(!menu.wasNameChecked()){
+            if(menu.wasNameIncorrect()){
+                System.out.println("NAme was incorrect");
+                return;
+            }
+        }
+
+        frame = new JFrame();
+        frame.setLayout(new BorderLayout());
+        frame.setSize(600,480);
+//        frame.add(panel, BorderLayout.CENTER);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
+        frame.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent windowEvent) {
+                if (JOptionPane.showConfirmDialog(frame,
+                        "Are you sure you want to close this window and disconnect from the game?",
+                        "Close Window?",
+                        JOptionPane.YES_NO_OPTION,
+                        JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+                    panel = null; frame = null; socket = null;
+//                    mode = GAME_MODE;
+                }
+            }
+        });
+
         JLabel jl = new JLabel("Game is searching");
         jl.setSize(new Dimension(640, 480));
         frame.add(jl, BorderLayout.CENTER);
@@ -66,9 +95,14 @@ public class PanelThread extends Thread {
 
         cc.start();
         frame.remove(jl);
+        panel.setSize(640, 480);
         frame.add(panel, BorderLayout.CENTER);
+        frame.repaint();
 
         menu.setGameStartedFlag();
+
+        frame.repaint();
+        panel.repaint();
 
     }
 }

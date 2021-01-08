@@ -19,14 +19,14 @@ public class PanelThread extends Thread {
     private MessageSender ms;
     private MessageReceiver mr;
     private ConnectionChecker cc;
-
     private JFrame frame;
+
+    private Container container;
     private Menu menu;
 
-    public PanelThread(String address, int port, JFrame frame, Menu menu, String name){
+    public PanelThread(String address, int port, Menu menu, String name){
         this.address = address;
         this.port = port;
-        this.frame = frame;
         this.menu = menu;
         this.name = name;
 
@@ -75,34 +75,30 @@ public class PanelThread extends Thread {
                         "Close Window?",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    panel = null; frame = null; socket = null;
+                    panel = null;  socket = null; frame = null;
 //                    mode = GAME_MODE;
                 }
             }
         });
 
-        JLabel jl = new JLabel("Game is searching");
-        jl.setSize(new Dimension(640, 480));
-        frame.add(jl, BorderLayout.CENTER);
-
-        System.out.println("Before");
-        while(!panel.hasGameBeenFound()){
-            //wait
-        }
-        System.out.println("After");
-
-
-
+        CreateLobbyButton clb = new CreateLobbyButton(menu);
+        JoinLobbyButton jlb = new JoinLobbyButton(menu);
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(clb);
+        buttonPanel.add(jlb);
+        frame.add(buttonPanel, BorderLayout.SOUTH);
         cc.start();
-        frame.remove(jl);
-        panel.setSize(640, 480);
-        frame.add(panel, BorderLayout.CENTER);
-        frame.repaint();
 
-        menu.setGameStartedFlag();
+//        panel.setSize(640, 480);
+//        frame.add(panel, BorderLayout.CENTER);
+//        frame.repaint();
 
+//        menu.setGameStartedFlag();
+        container = new Container(frame, menu, mr, ms, clb, jlb, cc, panel);
+        menu.setContainer(container);
+        container.setUsername(name);
         frame.repaint();
-        panel.repaint();
+//        panel.repaint();
 
     }
 }

@@ -49,8 +49,6 @@ public class MessageSender{
             e.printStackTrace();
         }
 
-
-
         return true;
     }
 

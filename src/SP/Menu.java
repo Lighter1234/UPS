@@ -29,6 +29,7 @@ public class Menu extends JPanel {
     private Socket socket;
     private String address;
     private int port;
+    private Container container;
 
     private boolean playerInitialized = false;
     private boolean nameIncorrect = false;
@@ -111,10 +112,8 @@ public class Menu extends JPanel {
 //            e.printStackTrace();
 //        }
 
-        //TODO CONNECTION
-
         System.out.println("Name: "+ name);
-        PanelThread pt = new PanelThread(address, port, frame, this, name);
+        PanelThread pt = new PanelThread(address, port, this, name);
         pt.start();
 
         // Game running
@@ -156,5 +155,18 @@ public class Menu extends JPanel {
         System.out.println("Name is incorrect!");
         this.nameIncorrect = true;
 
+    }
+
+    public synchronized void createLobby(){
+//            TODO LOBBY
+        this.container.sendCreateLobbyMessage("Test");
+    }
+
+    public void setContainer(Container container) {
+        this.container = container;
+    }
+
+    public void joinLobby() {
+        this.container.sendJoinLobbyMessage("Test");
     }
 }

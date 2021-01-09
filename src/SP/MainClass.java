@@ -12,7 +12,7 @@ public class MainClass {
     public static void main(String[] args){
         JFrame frame = new JFrame();
       /*  Panel panel = new Panel();*/
-        Menu menu = new Menu("147.228.63.10", 10000);
+        Menu menu = new Menu("147.228.63.10", 10001);
         frame.setLayout(new BorderLayout());
         frame.setSize(600,480);
         frame.add(menu, BorderLayout.CENTER);

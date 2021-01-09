@@ -86,11 +86,11 @@ public class MessageReceiver extends Thread{
         }
         if(splitted[0].contains("300")){
             panel.setGameId(Integer.parseInt(splitted[2]));
+            menu.switchToGame();
             panel.gameFound();
-            panel.repaint();
         }
 
-        if(splitted[0].contains("201")){
+        if(splitted[0].contains("201")){    //
             Object[] options = {"OK"};
             int n = JOptionPane.showOptionDialog(panel,
                     "Message here ","Title",
@@ -99,6 +99,15 @@ public class MessageReceiver extends Thread{
                     null,
                     options,
                     options[0]);
+        }
+        if(splitted[0].contains("350")){
+            menu.refreshLobbies(splitted[1]);
+        }
+        if(splitted[0].contains("210")){
+            menu.switchToLobby();
+        }
+        if(splitted[0].contains("211")){
+            menu.switchToLobby();
         }
     }
 

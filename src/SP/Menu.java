@@ -14,8 +14,9 @@ public class Menu extends JPanel {
 
     private final int MENU_MODE = 0;
     private final int GAME_MODE = 1;
-    private final int GAME_SEARCHING = 2;
+//    private final int GAME_SEARCHING = 2;
     private final int GAME_RUNNING = 3;
+    private final int LOBBY_MODE = 2;
 
     private int mode = MENU_MODE;
 
@@ -97,6 +98,21 @@ public class Menu extends JPanel {
 
     }
 
+    public void switchToLobby(){
+        this.mode = LOBBY_MODE;
+        this.repaint();
+
+    }
+
+    public void switchToGame(){
+        this.container.switchToGame();
+    }
+
+    public void drawLobby(){
+
+
+    }
+
     public void createConnection(){
         String name = tf.getText();
 
@@ -115,9 +131,6 @@ public class Menu extends JPanel {
         System.out.println("Name: "+ name);
         PanelThread pt = new PanelThread(address, port, this, name);
         pt.start();
-
-        // Game running
-        this.mode = GAME_SEARCHING;
 
 
         this.repaint();
@@ -157,16 +170,23 @@ public class Menu extends JPanel {
 
     }
 
-    public synchronized void createLobby(){
-//            TODO LOBBY
-        this.container.sendCreateLobbyMessage("Test");
+    public synchronized void createLobby(String lobbyName){
+        this.container.sendCreateLobbyMessage(lobbyName);
     }
 
     public void setContainer(Container container) {
         this.container = container;
     }
 
-    public void joinLobby() {
-        this.container.sendJoinLobbyMessage("Test");
+    public void joinLobby(String lobbyName) {
+        this.container.sendJoinLobbyMessage(lobbyName);
+    }
+
+    public void sendRefreshRequest(){
+        container.sendRefreshRequest();
+    }
+
+    public void refreshLobbies(String s) {
+        container.refreshLobbies(s.split(","));
     }
 }

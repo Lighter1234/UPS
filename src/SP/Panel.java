@@ -83,25 +83,11 @@ public class Panel extends JPanel {
      * @return
      */
     public void addCircle(int x, int y){
-//        for(short i = 0 ; i < this.rectangles.length ; i++){
-////            Rectangle2D current = this.rectangles[i];
-////            if(current.contains(x, y)){
-////                short pointer = game.getPointer(i);
-////                this.prepareMoveMessage(i, i);
-////            }
-////        }
         this.pointers[x] += 1;
         this.cells[x][y] = 1;
     }
 
     public void addCircleFromOpponent(int x, int y){
-//        for(short i = 0 ; i < this.rectangles.length ; i++){
-//            Rectangle2D current = this.rectangles[i];
-//            if(current.contains(x, y)){
-//                short pointer = game.getPointer(i);
-//                this.prepareMoveMessage(i, i);
-//            }
-//        }
         this.pointers[x] += 1;
         this.cells[x][y] = 2;
     }

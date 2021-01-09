@@ -52,7 +52,7 @@ public class PanelThread extends Thread {
     @Override
     public void run() {
         ms.sendMessage("connect|0|" + name);
-        //TODO same name
+
         System.out.println("Sent message");
         while(!menu.wasNameChecked()){
             if(menu.wasNameIncorrect()){
@@ -80,12 +80,20 @@ public class PanelThread extends Thread {
                 }
             }
         });
+        JTextField clbt = new JTextField("", 2);
+        JTextField jlbt = new JTextField("", 2);
 
-        CreateLobbyButton clb = new CreateLobbyButton(menu);
-        JoinLobbyButton jlb = new JoinLobbyButton(menu);
+        CreateLobbyButton clb = new CreateLobbyButton(menu, clbt);
+        JoinLobbyButton jlb = new JoinLobbyButton(menu, jlbt);
+        RefreshButton rb = new RefreshButton(menu);
         JPanel buttonPanel = new JPanel();
+
+
         buttonPanel.add(clb);
+        buttonPanel.add(clbt);
         buttonPanel.add(jlb);
+        buttonPanel.add(jlbt);
+        buttonPanel.add(rb);
         frame.add(buttonPanel, BorderLayout.SOUTH);
         cc.start();
 
@@ -94,7 +102,7 @@ public class PanelThread extends Thread {
 //        frame.repaint();
 
 //        menu.setGameStartedFlag();
-        container = new Container(frame, menu, mr, ms, clb, jlb, cc, panel);
+        container = new Container(frame, menu, mr, ms, buttonPanel, cc, panel);
         menu.setContainer(container);
         container.setUsername(name);
         frame.repaint();

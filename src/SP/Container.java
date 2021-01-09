@@ -65,7 +65,8 @@ public class Container {
       this.frame.remove(buttonPanel);
       this.frame.remove(subPanel);
       this.frame.add(panel);
-        this.frame.repaint();
+
+      this.frame.repaint();
 
         panel.repaint();
     }

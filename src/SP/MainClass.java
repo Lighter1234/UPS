@@ -17,6 +17,7 @@ public class MainClass {
         frame.setSize(600,480);
         frame.add(menu, BorderLayout.CENTER);
 //        frame.add(panel, BorderLayout.CENTER);
+//        frame.pack();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
 

@@ -25,6 +25,7 @@ public class Menu extends JPanel {
     private ConnectButton cb;
     private JTextField tf;
     private JFrame frame;
+    private JPanel buttonPanel;
     private Panel panel;
 
     private Socket socket;
@@ -44,7 +45,11 @@ public class Menu extends JPanel {
         cb = new ConnectButton(this);
         tf = new JTextField();
         tf.setColumns(AMOUNT_OF_COLS);
-        this.add(gb);
+        buttonPanel = new JPanel();
+//        buttonPanel.setLayout(new BorderLayout());
+        buttonPanel.add(gb);
+        this.add(buttonPanel);
+
     }
 
     @Override
@@ -71,12 +76,13 @@ public class Menu extends JPanel {
 
     public void switchToGameMenu() {
         this.mode = GAME_MODE;
-        this.remove(gb);
+        buttonPanel.remove(gb);
 //        gb = null;
 
-        this.add(mb);
-        this.add(tf);
-        this.add(cb);
+        buttonPanel.add(mb);
+        buttonPanel.add(tf);
+        buttonPanel.add(cb);
+
         this.repaint();
     }
 
@@ -87,13 +93,13 @@ public class Menu extends JPanel {
 
     public void switchToMainMenu(){
         this.mode = MENU_MODE;
-        this.remove(tf);
-        this.remove(mb);
-        this.remove(cb);
+        buttonPanel.remove(tf);
+        buttonPanel.remove(mb);
+        buttonPanel.remove(cb);
 //        mb = null;
 
 //        gb = new GameButton(this);
-        this.add(gb);
+        buttonPanel.add(gb);
         this.repaint();
 
     }

@@ -1,39 +1,39 @@
 package SP;
 
+import java.io.IOException;
 import java.net.Socket;
 
 public class ConnectionChecker extends Thread {
 
     private Socket socket;
-    private Panel panel;
+    private Menu menu;
     private MessageSender ms;
 
     private final long TEN_SECONDS = 10000;
 
-    public ConnectionChecker(Socket socket, Panel panel, MessageSender ms){
+    public ConnectionChecker(Socket socket, Menu menu, MessageSender ms){
         this.socket = socket;
-        this.panel = panel;
+        this.menu = menu;
         this.ms = ms;
     }
 
 
     @Override
     public void run(){
-//        while(true){
-//            if(!socket.isConnected()){
-//                this.panel.setDisconnectedFlag();
-//                System.out.println("Server connection ran out!");
-//                return;
-//            }
-//
-//            ms.sendMessage(panel.getId() + "|PING");
-//            try {
-//                this.sleep(TEN_SECONDS);
-//            } catch (InterruptedException e) {
+        while(true){
+
+            try {
+                this.sleep(TEN_SECONDS);
+                ms.sendMessage( "ping|" + menu.getUserName());
+                System.out.println("Sending : " + "ping|" + menu.getUserName());
+            } catch (InterruptedException | IOException e) {
 //                e.printStackTrace();
-//            }
-//
-//        }
+                System.out.println("Server is not reachable!");
+                this.menu.switchToMainMenu();
+                return;
+            }
+
+        }
     }
 
 

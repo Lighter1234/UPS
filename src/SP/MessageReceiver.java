@@ -19,9 +19,9 @@ public class MessageReceiver extends Thread{
         this.game = game;
     }
 
-    public MessageReceiver(Socket socket, Panel panel, Menu menu){
+    public MessageReceiver(Socket socket, Menu menu){
         this.socket = socket;
-        this.panel = panel;
+//        this.panel = panel;
         this.game = null;
         this.menu = menu;
     }
@@ -39,7 +39,7 @@ public class MessageReceiver extends Thread{
             while(true){
                 message = br.readLine().trim();
 
-                if(message != null){
+                if(message != null || message.length() != 0){
                     System.out.println(message.trim());
                     splitted = message.split("\\|");
 //                    System.out.println(Arrays.toString(splitted[0]));
@@ -51,17 +51,27 @@ public class MessageReceiver extends Thread{
 
                 }
             }
-        }catch(IOException e){
-            e.printStackTrace();
+        }catch(IOException | NullPointerException e){
+//            e.printStackTrace();
+            return;
         }
 
     }
 
     public void handleMessage(String[] splitted){
         String[] mes;
+        Object[] options = {"OK"};
+        JOptionPane.showOptionDialog(panel,
+                splitted[splitted.length - 1],"Message",
+                JOptionPane.PLAIN_MESSAGE,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        menu.switchToLobby();
         if(splitted[0].equals("205")){
             System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
-            panel.setId(Integer.parseInt(splitted[1]));
+            menu.setId(Integer.parseInt(splitted[1]));
             menu.setPlayerInitialized();
             menu.setNameChecked();
         }
@@ -88,27 +98,39 @@ public class MessageReceiver extends Thread{
             panel.setGameId(Integer.parseInt(splitted[2]));
             menu.switchToGame();
             panel.gameFound();
+            return;
         }
 
-        if(splitted[0].contains("201")){    //
-            Object[] options = {"OK"};
-            int n = JOptionPane.showOptionDialog(panel,
-                    "Message here ","Title",
-                    JOptionPane.PLAIN_MESSAGE,
-                    JOptionPane.QUESTION_MESSAGE,
-                    null,
-                    options,
-                    options[0]);
+        if(splitted[0].contains("201")){    //Victory
+            menu.switchToLobby();
+
         }
         if(splitted[0].contains("350")){
             menu.refreshLobbies(splitted[1]);
         }
         if(splitted[0].contains("210")){
-            menu.switchToLobby();
+//            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("211")){
+//            menu.switchToChosenLobby();
+        }
+        if(splitted[0].contains("-201")){   // Defeat
+
+            JOptionPane.showOptionDialog(panel,
+                    splitted[1],"Defeat",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
             menu.switchToLobby();
         }
+
+    }
+
+
+    public void setPanel(Panel panel){
+        this.panel = panel;
     }
 
 }

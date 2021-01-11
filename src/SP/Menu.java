@@ -33,6 +33,7 @@ public class Menu extends JPanel {
     private int port;
     private Container container;
 
+
     private boolean playerInitialized = false;
     private boolean nameIncorrect = false;
     private boolean nameChecked = false;
@@ -87,7 +88,6 @@ public class Menu extends JPanel {
     }
 
     private void drawGameMenu(Graphics2D g) {
-        System.out.println("Clsoe enough");
 
     }
 
@@ -96,6 +96,12 @@ public class Menu extends JPanel {
         buttonPanel.remove(tf);
         buttonPanel.remove(mb);
         buttonPanel.remove(cb);
+        if(container != null){
+            container.dispose();
+        }
+        this.container = null;
+        this.frame = null;
+        this.panel = null;
 //        mb = null;
 
 //        gb = new GameButton(this);
@@ -106,6 +112,7 @@ public class Menu extends JPanel {
 
     public void switchToLobby(){
         this.mode = LOBBY_MODE;
+        this.container.switchToLobby();
         this.repaint();
 
     }
@@ -195,4 +202,14 @@ public class Menu extends JPanel {
     public void refreshLobbies(String s) {
         container.refreshLobbies(s.split(","));
     }
+
+    public String getUserName() {
+        return this.container.getUsername();
+    }
+
+    public void setId(int id) {
+        this.container.setId(id);
+    }
+
+
 }

@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
+import java.io.IOException;
 
 public class Panel extends JPanel {
     private final short SIZE_OF_BOARD = 10;
@@ -142,7 +143,11 @@ public class Panel extends JPanel {
           /*  System.out.println("Message prepared!" + this.messageReady + " Message: " + this.message);
 */
             this.message = s;
-            ms.sendMessage(s);
+            try {
+                ms.sendMessage(s);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 //            this.messageReady = true;
         }
     }

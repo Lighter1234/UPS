@@ -12,7 +12,6 @@ public class PanelThread extends Thread {
     private final String address;
     private final int port;
 
-    private Panel panel;
     private Socket socket;
     private String name;
 
@@ -24,6 +23,8 @@ public class PanelThread extends Thread {
     private Container container;
     private Menu menu;
 
+    private JPanel buttonPanel;
+
     public PanelThread(String address, int port, Menu menu, String name){
         this.address = address;
         this.port = port;
@@ -34,32 +35,31 @@ public class PanelThread extends Thread {
         try {
             socket = new Socket(address, port);
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Cannot connect to server!");
+            return;
         }
 
 
         ms = new MessageSender(socket);
-        this.panel = new Panel(ms);
 
-        mr = new MessageReceiver(socket, panel, menu);
+        mr = new MessageReceiver(socket, menu);
         mr.start();
-        cc = new ConnectionChecker(socket, panel, ms);
+        cc = new ConnectionChecker(socket, menu, ms);
+
+        JTextField clbt = new JTextField("", 2);
+        JTextField jlbt = new JTextField("", 2);
+
+        CreateLobbyButton clb = new CreateLobbyButton(menu, clbt);
+        JoinLobbyButton jlb = new JoinLobbyButton(menu, jlbt);
+        RefreshButton rb = new RefreshButton(menu);
+        buttonPanel = new JPanel();
 
 
-    }
-
-
-    @Override
-    public void run() {
-        ms.sendMessage("connect|0|" + name);
-
-        System.out.println("Sent message");
-        while(!menu.wasNameChecked()){
-            if(menu.wasNameIncorrect()){
-                System.out.println("NAme was incorrect");
-                return;
-            }
-        }
+        buttonPanel.add(clb);
+        buttonPanel.add(clbt);
+        buttonPanel.add(jlb);
+        buttonPanel.add(jlbt);
+        buttonPanel.add(rb);
 
         frame = new JFrame();
         frame.setLayout(new BorderLayout());
@@ -75,26 +75,41 @@ public class PanelThread extends Thread {
                         "Close Window?",
                         JOptionPane.YES_NO_OPTION,
                         JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-                    panel = null;  socket = null; frame = null;
+                    try {
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    frame = null;
 //                    mode = GAME_MODE;
                 }
             }
         });
-        JTextField clbt = new JTextField("", 2);
-        JTextField jlbt = new JTextField("", 2);
-
-        CreateLobbyButton clb = new CreateLobbyButton(menu, clbt);
-        JoinLobbyButton jlb = new JoinLobbyButton(menu, jlbt);
-        RefreshButton rb = new RefreshButton(menu);
-        JPanel buttonPanel = new JPanel();
-
-
-        buttonPanel.add(clb);
-        buttonPanel.add(clbt);
-        buttonPanel.add(jlb);
-        buttonPanel.add(jlbt);
-        buttonPanel.add(rb);
         frame.add(buttonPanel, BorderLayout.SOUTH);
+
+        container = new Container(frame, menu, mr, ms, buttonPanel, cc);
+    }
+
+
+    @Override
+    public void run() {
+        try {
+            ms.sendMessage("connect|0|" + name);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
+        menu.setContainer(container);
+
+        System.out.println("Sent message");
+        while(!menu.wasNameChecked()){
+            if(menu.wasNameIncorrect()){
+                System.out.println("NAme was incorrect");
+                return;
+            }
+        }
+
+        container.setUsername(name);
         cc.start();
 
 //        panel.setSize(640, 480);
@@ -102,9 +117,6 @@ public class PanelThread extends Thread {
 //        frame.repaint();
 
 //        menu.setGameStartedFlag();
-        container = new Container(frame, menu, mr, ms, buttonPanel, cc, panel);
-        menu.setContainer(container);
-        container.setUsername(name);
         frame.repaint();
 //        panel.repaint();
 

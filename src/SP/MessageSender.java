@@ -38,16 +38,12 @@ public class MessageSender{
         return this.panel.isMessageReady();
     }
 
-    public synchronized boolean sendMessage(String message){
+    public synchronized boolean sendMessage(String message) throws IOException{
 //        if(this.panel.isDisconnected()){
 //            return false;
 //        }
+         oos.write(message.getBytes());
 
-        try {
-            oos.write(message.getBytes());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         return true;
     }

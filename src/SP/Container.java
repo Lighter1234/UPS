@@ -2,6 +2,7 @@ package SP;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class Container {
     private JFrame frame;
@@ -18,15 +19,19 @@ public class Container {
     private JPanel subPanel;
     private JPanel buttonPanel;
 
+    private int amountOfVictories = 0;
+    private int amountOfLoses = 0;
+
     public Container(JFrame frame, Menu menu, MessageReceiver mr, MessageSender ms,
-                     JPanel buttonPanel, ConnectionChecker cc, Panel panel) {
+                     JPanel buttonPanel, ConnectionChecker cc) {
         this.frame = frame;
         this.menu = menu;
         this.mr = mr;
         this.ms = ms;
         this.buttonPanel = buttonPanel;
         this.cc = cc;
-        this.panel = panel;
+        panel = new Panel(ms);
+        this.mr.setPanel(panel);
         subPanel = new JPanel(); // For better look
         list = new JList();
 
@@ -36,7 +41,12 @@ public class Container {
 
     public void sendCreateLobbyMessage(String lobbyName) {
         System.out.println("Sending message to create");
-        ms.sendMessage("create|" + lobbyName + "|" + username);
+        try {
+            ms.sendMessage("create|" + lobbyName + "|" + username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void setUsername(String username){
@@ -45,7 +55,11 @@ public class Container {
 
     public void sendJoinLobbyMessage(String lobbyName) {
         System.out.println("Sending message to join");
-        ms.sendMessage("join|" + lobbyName + "|" + username);
+        try {
+            ms.sendMessage("join|" + lobbyName + "|" + username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void refreshLobbies(String[] lobbies){
@@ -57,17 +71,44 @@ public class Container {
     }
 
     public void sendRefreshRequest() {
-        ms.sendMessage("refresh|"+username);
+        try {
+            ms.sendMessage("refresh|"+username);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     public void switchToGame(){
       this.frame.remove(buttonPanel);
       this.frame.remove(subPanel);
+      panel = new Panel(this.ms);
       this.frame.add(panel);
-
+      this.mr.setPanel(panel);
       this.frame.repaint();
+      panel.repaint();
+    }
 
-        panel.repaint();
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void switchToLobby() {
+        this.frame.remove(panel);
+
+        this.frame.add(buttonPanel);
+        this.frame.add(subPanel);
+
+//        panel = null;
+        this.frame.repaint();
+
+    }
+
+    public void setId(int id) {
+        this.panel.setId(id);
+    }
+
+    public void dispose(){
+        this.frame.dispose();
     }
 }

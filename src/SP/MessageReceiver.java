@@ -35,8 +35,9 @@ public class MessageReceiver extends Thread{
 
         try{
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//            System.out.println("Testing input!");
+            System.out.println("Testing input!");
             while(true){
+
                 message = br.readLine().trim();
 
                 if(message != null || message.length() != 0){
@@ -52,7 +53,7 @@ public class MessageReceiver extends Thread{
                 }
             }
         }catch(IOException | NullPointerException e){
-//            e.printStackTrace();
+            e.printStackTrace();
             return;
         }
 
@@ -112,6 +113,30 @@ public class MessageReceiver extends Thread{
 //            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("211")){
+//            menu.switchToChosenLobby();
+        }
+        if(splitted[0].contains("222")){
+            menu.switchToGame();
+            int thisPlayer = Integer.parseInt(splitted[1]);
+            String[] moves = splitted[2].split(" ");
+
+            for(int i = 0 ; i < moves.length ; i++){
+                String[] divided = moves[i].split("-");
+                String[] temp = divided[1].split(",");
+                int player = Integer.parseInt(divided[0]);
+                if(player == 0){
+                    continue;
+                }
+                if(player == thisPlayer){
+                    System.out.println("Here x:"+  Integer.parseInt(temp[0]) + ", y:" +  Integer.parseInt(temp[1]) );
+                    this.panel.addCircle(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+                }else{
+                    System.out.println("Oponent x:"+  Integer.parseInt(temp[0]) + ", y:" +  Integer.parseInt(temp[1]) );
+                    this.panel.addCircleFromOpponent(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+                }
+
+
+            }
 //            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("-201")){   // Defeat

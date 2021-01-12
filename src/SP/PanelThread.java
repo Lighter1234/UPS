@@ -88,6 +88,8 @@ public class PanelThread extends Thread {
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
         container = new Container(frame, menu, mr, ms, buttonPanel, cc);
+        menu.setContainer(container);
+        System.out.println("---------------New Container-------------");
     }
 
 

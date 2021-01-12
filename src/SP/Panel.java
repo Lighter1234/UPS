@@ -35,6 +35,9 @@ public class Panel extends JPanel {
 
     private MessageSender ms;
 
+    private static int number = 0;
+
+    private int counter = number++;
 
     public Panel(MessageSender ms){
         this.ms = ms;
@@ -46,7 +49,7 @@ public class Panel extends JPanel {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
         drawGameBoard(g2);
-        System.out.println("Panel");
+        System.out.println("Panel " + this.getCounter());
     }
 
 
@@ -86,11 +89,14 @@ public class Panel extends JPanel {
     public void addCircle(int x, int y){
         this.pointers[x] += 1;
         this.cells[x][y] = 1;
+        System.out.println("Panel x: " +x + " y: " + pointers[x] + " player: "+ cells[x][y]);
     }
 
     public void addCircleFromOpponent(int x, int y){
         this.pointers[x] += 1;
         this.cells[x][y] = 2;
+        System.out.println("Panel x: " +x + " y: " + pointers[x] + " oponent: "+ cells[x][y]);
+
     }
 
     public void makeMove(double x, double y){
@@ -105,6 +111,10 @@ public class Panel extends JPanel {
 
     private short getPointer(int x){
         return this.pointers[x];
+    }
+
+    public void setPointer(int x, short y){
+        this.pointers[x] = y;
     }
 
     private void prepareRectangles(Graphics2D g2, double part){
@@ -190,4 +200,7 @@ public class Panel extends JPanel {
     }
 
 
+    public int getCounter() {
+        return this.counter;
+    }
 }

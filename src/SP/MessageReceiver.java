@@ -40,7 +40,7 @@ public class MessageReceiver extends Thread{
 
                 message = br.readLine().trim();
 
-                if(message != null || message.length() != 0){
+                if(message != null && message.length() != 0){
                     System.out.println(message.trim());
                     splitted = message.split("\\|");
 //                    System.out.println(Arrays.toString(splitted[0]));
@@ -62,14 +62,13 @@ public class MessageReceiver extends Thread{
     public void handleMessage(String[] splitted){
         String[] mes;
         Object[] options = {"OK"};
-        JOptionPane.showOptionDialog(panel,
-                splitted[splitted.length - 1],"Message",
-                JOptionPane.PLAIN_MESSAGE,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                options,
-                options[0]);
-        menu.switchToLobby();
+//        JOptionPane.showOptionDialog(panel,
+//                splitted[splitted.length - 1],"Message",
+//                JOptionPane.PLAIN_MESSAGE,
+//                JOptionPane.QUESTION_MESSAGE,
+//                null,
+//                options,
+//                options[0]);
         if(splitted[0].equals("205")){
             System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
             menu.setId(Integer.parseInt(splitted[1]));
@@ -97,7 +96,7 @@ public class MessageReceiver extends Thread{
         }
         if(splitted[0].contains("300")){
             panel.setGameId(Integer.parseInt(splitted[2]));
-            menu.switchToGame();
+            menu.switchToGame(null);
             panel.gameFound();
             return;
         }
@@ -116,27 +115,44 @@ public class MessageReceiver extends Thread{
 //            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("222")){
-            menu.switchToGame();
+            System.out.println("panel: " + panel.getCounter());
+            this.setPanel(menu.getPanel());
+            System.out.println("panel2: " + panel.getCounter());
+            int max = 0;
             int thisPlayer = Integer.parseInt(splitted[1]);
             String[] moves = splitted[2].split(" ");
 
             for(int i = 0 ; i < moves.length ; i++){
                 String[] divided = moves[i].split("-");
                 String[] temp = divided[1].split(",");
+
+                int x = Integer.parseInt(temp[0]);
+                int y = Integer.parseInt(temp[1]);
                 int player = Integer.parseInt(divided[0]);
+                if(y == 9){
+                    panel.setPointer(x, (short)max);
+                    max = 0;
+                }
                 if(player == 0){
                     continue;
                 }
-                if(player == thisPlayer){
-                    System.out.println("Here x:"+  Integer.parseInt(temp[0]) + ", y:" +  Integer.parseInt(temp[1]) );
-                    this.panel.addCircle(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
-                }else{
-                    System.out.println("Oponent x:"+  Integer.parseInt(temp[0]) + ", y:" +  Integer.parseInt(temp[1]) );
-                    this.panel.addCircleFromOpponent(Integer.parseInt(temp[0]), Integer.parseInt(temp[1]));
+                if(max < y){
+                    max = y;
                 }
+                if(player == thisPlayer){
+                    System.out.println("Here x:"+  x + ", y:" + y );
+                    this.panel.addCircle(x, y);
+                }else{
+                    System.out.println("Oponent x:"+ x + ", y:" +  y );
+                    this.panel.addCircleFromOpponent(x, y);
+                }
+                panel.repaint();
 
 
             }
+            panel.repaint();
+            menu.switchToGame(panel);
+
 //            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("-201")){   // Defeat

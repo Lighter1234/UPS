@@ -117,8 +117,8 @@ public class Menu extends JPanel {
 
     }
 
-    public void switchToGame(){
-        this.container.switchToGame();
+    public void switchToGame(Panel p){
+        this.container.switchToGame(p);
     }
 
     public void drawLobby(){
@@ -145,7 +145,7 @@ public class Menu extends JPanel {
         PanelThread pt = new PanelThread(address, port, this, name);
         pt.start();
 
-
+        System.out.println("Testing changing menu ");
         this.repaint();
     }
 
@@ -209,6 +209,11 @@ public class Menu extends JPanel {
 
     public void setId(int id) {
         this.container.setId(id);
+    }
+
+
+    public Panel getPanel(){
+        return this.container.getPanel();
     }
 
 

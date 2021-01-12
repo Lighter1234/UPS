@@ -31,12 +31,16 @@ public class Container {
         this.buttonPanel = buttonPanel;
         this.cc = cc;
         panel = new Panel(ms);
+        panel.setLayout(new BorderLayout());
         this.mr.setPanel(panel);
         subPanel = new JPanel(); // For better look
         list = new JList();
 
         subPanel.add(list);
         frame.add(subPanel, BorderLayout.CENTER);
+
+        System.out.println("Test mr:" + mr + " panel: " + panel.getCounter());
+
     }
 
     public void sendCreateLobbyMessage(String lobbyName) {
@@ -79,10 +83,14 @@ public class Container {
     }
 
 
-    public void switchToGame(){
+    public void switchToGame(Panel p){
       this.frame.remove(buttonPanel);
       this.frame.remove(subPanel);
-      panel = new Panel(this.ms);
+      if(p == null){
+          panel = new Panel(this.ms);
+      }else{
+          panel = p;
+      }
       this.frame.add(panel);
       this.mr.setPanel(panel);
       this.frame.repaint();
@@ -111,4 +119,6 @@ public class Container {
     public void dispose(){
         this.frame.dispose();
     }
+
+    public Panel getPanel(){ return this.panel;}
 }

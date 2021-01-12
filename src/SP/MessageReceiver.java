@@ -62,25 +62,25 @@ public class MessageReceiver extends Thread{
     public void handleMessage(String[] splitted){
         String[] mes;
         Object[] options = {"OK"};
-//        JOptionPane.showOptionDialog(panel,
-//                splitted[splitted.length - 1],"Message",
-//                JOptionPane.PLAIN_MESSAGE,
-//                JOptionPane.QUESTION_MESSAGE,
-//                null,
-//                options,
-//                options[0]);
-        if(splitted[0].equals("205")){
+        JOptionPane.showOptionDialog(panel,
+                splitted[splitted.length - 1],"Message",
+                JOptionPane.PLAIN_MESSAGE,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        if(splitted[0].equals("205")){  // Name ok - connected
             System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
             menu.setId(Integer.parseInt(splitted[1]));
             menu.setPlayerInitialized();
             menu.setNameChecked();
         }
-        if(splitted[0].contains("-411")){
+        if(splitted[0].contains("-411")){   // Name incorrect
             System.out.println("Name was incorrect!");
             menu.setNameIncorrect();
             menu.setNameChecked();
         }
-        if(splitted[0].contains("200")){
+        if(splitted[0].contains("200")){    // Move ok
             mes = panel.getMessage().split("\\|");
 //            System.out.println("Accepted message:" + mes.getMessage());
             String s[] = mes[1].split(",");
@@ -89,12 +89,12 @@ public class MessageReceiver extends Thread{
 
             panel.messageReceived();
         }
-        if(splitted[0].contains("305")){
+        if(splitted[0].contains("305")){    // Other player
             String s[] = splitted[1].split(",");
             panel.addCircleFromOpponent(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
             panel.repaint();
         }
-        if(splitted[0].contains("300")){
+        if(splitted[0].contains("300")){    // Game found
             panel.setGameId(Integer.parseInt(splitted[2]));
             menu.switchToGame(null);
             panel.gameFound();
@@ -108,12 +108,7 @@ public class MessageReceiver extends Thread{
         if(splitted[0].contains("350")){
             menu.refreshLobbies(splitted[1]);
         }
-        if(splitted[0].contains("210")){
-//            menu.switchToChosenLobby();
-        }
-        if(splitted[0].contains("211")){
-//            menu.switchToChosenLobby();
-        }
+
         if(splitted[0].contains("222")){
             menu.setNameChecked();
             System.out.println("panel: " + panel.getCounter());

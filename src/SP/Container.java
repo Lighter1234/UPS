@@ -68,6 +68,9 @@ public class Container {
 
     public void refreshLobbies(String[] lobbies){
         if(lobbies[0].equals("(null)")){
+            list.removeAll();
+            list.repaint();
+
             return;
         }
         list.setListData(lobbies);

@@ -42,6 +42,10 @@ public class Panel extends JPanel {
     public Panel(MessageSender ms){
         this.ms = ms;
         this.addMouseListener(new MouseHandler(this));
+        for(int i = 0  ; i < this.pointers.length; i++){
+            System.out.print( this.pointers[i] + " ");
+        }
+        System.out.println();
     }
 
     @Override

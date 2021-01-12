@@ -102,7 +102,8 @@ public class Menu extends JPanel {
         this.container = null;
         this.frame = null;
         this.panel = null;
-//        mb = null;
+
+        //        mb = null;
 
 //        gb = new GameButton(this);
         buttonPanel.add(gb);

@@ -42,6 +42,7 @@ public class MessageSender{
 //        if(this.panel.isDisconnected()){
 //            return false;
 //        }
+        System.out.println("Sending: " + message);
          oos.write(message.getBytes());
 
 

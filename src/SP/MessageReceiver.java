@@ -115,6 +115,7 @@ public class MessageReceiver extends Thread{
 //            menu.switchToChosenLobby();
         }
         if(splitted[0].contains("222")){
+            menu.setNameChecked();
             System.out.println("panel: " + panel.getCounter());
             this.setPanel(menu.getPanel());
             System.out.println("panel2: " + panel.getCounter());
@@ -129,16 +130,11 @@ public class MessageReceiver extends Thread{
                 int x = Integer.parseInt(temp[0]);
                 int y = Integer.parseInt(temp[1]);
                 int player = Integer.parseInt(divided[0]);
-                if(y == 9){
-                    panel.setPointer(x, (short)max);
-                    max = 0;
-                }
+
                 if(player == 0){
                     continue;
                 }
-                if(max < y){
-                    max = y;
-                }
+
                 if(player == thisPlayer){
                     System.out.println("Here x:"+  x + ", y:" + y );
                     this.panel.addCircle(x, y);

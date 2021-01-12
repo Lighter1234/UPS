@@ -111,6 +111,7 @@ public class PanelThread extends Thread {
             }
         }
 
+        System.out.println("Setting up");
         container.setUsername(name);
         cc.start();
 

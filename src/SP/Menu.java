@@ -33,6 +33,8 @@ public class Menu extends JPanel {
     private int port;
     private Container container;
 
+    private String username;
+
 
     private boolean playerInitialized = false;
     private boolean nameIncorrect = false;
@@ -205,7 +207,7 @@ public class Menu extends JPanel {
     }
 
     public String getUserName() {
-        return this.container.getUsername();
+        return this.username;
     }
 
     public void setId(int id) {
@@ -215,6 +217,19 @@ public class Menu extends JPanel {
 
     public Panel getPanel(){
         return this.container.getPanel();
+    }
+
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void incrementVictoryCounter() {
+        container.incrementVictoryCounter();
+    }
+
+    public void incrementDefeatCounter() {
+        container.incrementDefeatCounter();
     }
 
 

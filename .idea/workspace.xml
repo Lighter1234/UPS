@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5afefb17-6fdc-4ddc-9f27-9b90eb38eafe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/UPS/SP/Container.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/UPS/SP/Container.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/ConnectButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/ConnectButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SP/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MainClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MessageReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/PanelThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/PanelThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,22 +138,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state width="456" height="466" key="DebuggerActiveHint/0.0.1366.768@0.0.1366.768" timestamp="1610410236215" />
-    <state width="1323" height="238" key="GridCell.Tab.0.bottom" timestamp="1610416280883">
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom" timestamp="1610576719791">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610416280883" />
-    <state width="1323" height="238" key="GridCell.Tab.0.center" timestamp="1610416280883">
+    <state width="1323" height="215" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1610576719791" />
+    <state width="1323" height="215" key="GridCell.Tab.0.center" timestamp="1610576719791">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610416280883" />
-    <state width="1323" height="238" key="GridCell.Tab.0.left" timestamp="1610416280883">
+    <state width="1323" height="215" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1610576719791" />
+    <state width="1323" height="215" key="GridCell.Tab.0.left" timestamp="1610576719791">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610416280883" />
-    <state width="1323" height="238" key="GridCell.Tab.0.right" timestamp="1610416280883">
+    <state width="1323" height="215" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1610576719791" />
+    <state width="1323" height="215" key="GridCell.Tab.0.right" timestamp="1610576719791">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="238" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610416280883" />
+    <state width="1323" height="215" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1610576719791" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1610416280883">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -173,14 +174,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1604829469884" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1610427168965">
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1610564842016">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1610427168965" />
-    <state x="345" y="94" width="607" height="643" key="find.popup" timestamp="1610411815025">
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1610564842016" />
+    <state x="345" y="94" width="607" height="643" key="find.popup" timestamp="1610573515173">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="345" y="94" width="607" height="643" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1610411815025" />
+    <state x="345" y="94" width="607" height="643" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1610573515173" />
     <state x="65" y="4" key="new project wizard" timestamp="1604062959252">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -189,10 +190,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="339" y="172" key="run.anything.popup/0.0.1366.768@0.0.1366.768" timestamp="1609880559078" />
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1610368372786">
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup" timestamp="1610528328894">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1610368372786" />
+    <state x="346" y="89" width="672" height="678" key="search.everywhere.popup/0.0.1366.768@0.0.1366.768" timestamp="1610528328894" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -206,6 +207,11 @@
           <url>file://$PROJECT_DIR$/src/SP/Panel.java</url>
           <line>94</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/SP/PanelThread.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

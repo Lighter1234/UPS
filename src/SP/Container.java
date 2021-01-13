@@ -18,6 +18,10 @@ public class Container {
     private JList list;
     private JPanel subPanel;
     private JPanel buttonPanel;
+    private JPanel headerPanel;
+
+    private JLabel nameLabel;
+    private JLabel scoreLabel;
 
     private int amountOfVictories = 0;
     private int amountOfLoses = 0;
@@ -38,8 +42,15 @@ public class Container {
 
         subPanel.add(list);
         frame.add(subPanel, BorderLayout.CENTER);
-
         System.out.println("Test mr:" + mr + " panel: " + panel.getCounter());
+        headerPanel = new JPanel();
+        nameLabel = new JLabel();
+        scoreLabel = new JLabel();
+        this.headerPanel.add(scoreLabel);
+        this.headerPanel.add(nameLabel);
+
+
+        frame.add(headerPanel, BorderLayout.NORTH);
 
     }
 
@@ -54,7 +65,15 @@ public class Container {
     }
 
     public void setUsername(String username){
+        this.menu.setUsername(username);
         this.username = username;
+
+        this.nameLabel.setText("Name: " + username);
+
+        this.scoreLabel.setText("Victories: " + amountOfVictories + " Loses: " + amountOfLoses);
+
+        this.headerPanel.repaint();
+
     }
 
     public void sendJoinLobbyMessage(String lobbyName) {
@@ -112,7 +131,8 @@ public class Container {
 
 //        panel = null;
         this.frame.repaint();
-
+//        this.setUsername(null);
+//        this.menu.setUsername(null);
     }
 
     public void setId(int id) {
@@ -120,8 +140,29 @@ public class Container {
     }
 
     public void dispose(){
+
         this.frame.dispose();
     }
 
     public Panel getPanel(){ return this.panel;}
+
+    public boolean isUsernameSet(){
+        return this.username == null;
+    }
+
+    public void incrementVictoryCounter(){
+        this.amountOfVictories++;
+        System.out.println("Victories:" + amountOfVictories);
+        this.headerPanel.repaint();
+        this.frame.repaint();
+    }
+
+    public void incrementDefeatCounter(){
+        this.amountOfLoses++;
+        System.out.println("Victories:" + amountOfVictories);
+
+        this.headerPanel.repaint();
+        this.frame.repaint();
+
+    }
 }

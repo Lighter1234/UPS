@@ -81,6 +81,10 @@ public class PanelThread extends Thread {
                         e.printStackTrace();
                     }
                     frame = null;
+                    container.dispose();
+                    container.setUsername(null);
+//                    menu.setUsername(null);
+
 //                    mode = GAME_MODE;
                 }
             }
@@ -95,6 +99,16 @@ public class PanelThread extends Thread {
 
     @Override
     public void run() {
+        if(menu.getUserName() != null){
+            container.dispose();
+            try {
+                this.socket.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return;
+        }
+
         try {
             ms.sendMessage("connect|0|" + name);
         } catch (IOException e) {
@@ -107,12 +121,15 @@ public class PanelThread extends Thread {
         while(!menu.wasNameChecked()){
             if(menu.wasNameIncorrect()){
                 System.out.println("NAme was incorrect");
+                container.dispose();
+                container = null;
                 return;
             }
         }
 
         System.out.println("Setting up");
         container.setUsername(name);
+        menu.setUsername(name);
         cc.start();
 
 //        panel.setSize(640, 480);
@@ -120,6 +137,7 @@ public class PanelThread extends Thread {
 //        frame.repaint();
 
 //        menu.setGameStartedFlag();
+//        frame.add(new JLabel("Name:" + name), BorderLayout.NORTH);
         frame.repaint();
 //        panel.repaint();
 

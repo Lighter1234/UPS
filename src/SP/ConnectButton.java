@@ -21,6 +21,20 @@ public class ConnectButton extends JButton implements ActionListener {
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(m.getUserName() != null){
+            JFrame panel = new JFrame();
+            Object[] options = {"OK"};
+
+            JOptionPane.showOptionDialog(panel,
+                    "You're already connected, exit the window and then connect again","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+
+            return;
+        }
         m.createConnection();
     }
 }

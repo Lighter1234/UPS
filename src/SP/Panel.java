@@ -160,7 +160,14 @@ public class Panel extends JPanel {
             try {
                 ms.sendMessage(s);
             } catch (IOException e) {
-                e.printStackTrace();
+                Object[] options = {"OK"};
+                JOptionPane.showOptionDialog(new JFrame(),
+                        "Error server unreachable!","Error",
+                        JOptionPane.PLAIN_MESSAGE,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
             }
 //            this.messageReady = true;
         }

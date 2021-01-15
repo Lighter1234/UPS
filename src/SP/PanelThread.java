@@ -112,7 +112,14 @@ public class PanelThread extends Thread {
         try {
             ms.sendMessage("connect|0|" + name);
         } catch (IOException e) {
-            e.printStackTrace();
+            Object[] options = {"OK"};
+            JOptionPane.showOptionDialog(new JFrame(),
+                    "Error server unreachable!","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
             return;
         }
         menu.setContainer(container);

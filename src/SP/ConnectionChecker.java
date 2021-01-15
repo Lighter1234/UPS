@@ -1,5 +1,6 @@
 package SP;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -28,7 +29,14 @@ public class ConnectionChecker extends Thread {
                 System.out.println("Sending : " + "ping|" + menu.getUserName());
             } catch (InterruptedException | IOException e) {
 //                e.printStackTrace();
-                System.out.println("Server is not reachable!");
+                Object[] options = {"OK"};
+                JOptionPane.showOptionDialog(new JFrame(),
+                        "Error server unreachable!","Error",
+                        JOptionPane.PLAIN_MESSAGE,
+                        JOptionPane.QUESTION_MESSAGE,
+                        null,
+                        options,
+                        options[0]);
                 this.menu.switchToMainMenu();
                 return;
             }

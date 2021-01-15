@@ -32,7 +32,7 @@ public class MessageReceiver extends Thread{
         String[] splitted;
         String move;
         Message mes = null;
-
+        Object[] options = {"OK"};
         try{
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             System.out.println("Testing input!");
@@ -53,7 +53,13 @@ public class MessageReceiver extends Thread{
                 }
             }
         }catch(IOException | NullPointerException e){
-            e.printStackTrace();
+            JOptionPane.showOptionDialog(panel,
+                    "Unknown Error!","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
             return;
         }
 
@@ -62,17 +68,28 @@ public class MessageReceiver extends Thread{
     public void handleMessage(String[] splitted){
         String[] mes;
         Object[] options = {"OK"};
-        int code = Integer.parseInt(splitted[0]);
-
+        int code = 0;
+        try {
+            code = Integer.parseInt(splitted[0]);
+        }catch(Exception e){
+            JOptionPane.showOptionDialog(panel,
+                    "Invalid message","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
+            return;
+        }
 
         if(code < 0){
-//            JOptionPane.showOptionDialog(panel,
-//                    splitted[splitted.length - 1],"Error",
-//                    JOptionPane.PLAIN_MESSAGE,
-//                    JOptionPane.QUESTION_MESSAGE,
-//                    null,
-//                    options,
-//                    options[0]);
+            JOptionPane.showOptionDialog(panel,
+                    splitted[splitted.length - 1],"Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
             if(splitted[0].contains("-411")){   // Name incorrect
                 System.out.println("Name was incorrect!");
                 menu.setNameIncorrect();
@@ -99,13 +116,13 @@ public class MessageReceiver extends Thread{
             }
 
         }else{
-//            JOptionPane.showOptionDialog(panel,
-//                    splitted[splitted.length - 1],"Message",
-//                    JOptionPane.PLAIN_MESSAGE,
-//                    JOptionPane.QUESTION_MESSAGE,
-//                    null,
-//                    options,
-//                    options[0]);
+            JOptionPane.showOptionDialog(panel,
+                    splitted[splitted.length - 1],"Message",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
             if(splitted[0].equals("205")){  // Name ok - connected
                 System.out.println(Integer.parseInt(splitted[1]) + " int " + "String: "+ splitted[1]);
                 menu.setId(Integer.parseInt(splitted[1]));
@@ -177,6 +194,10 @@ public class MessageReceiver extends Thread{
                 }
                 panel.repaint();
                 menu.switchToGame(panel);
+
+            }
+
+            if(code == 500){ // unknown message
 
             }
 

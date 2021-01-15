@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="5afefb17-6fdc-4ddc-9f27-9b90eb38eafe" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SP/ConnectButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/ConnectButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/ConnectionChecker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/ConnectionChecker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/Container.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Container.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/SP/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/MessageReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/MessageReceiver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/SP/Panel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/Panel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SP/PanelThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/SP/PanelThread.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -174,14 +174,14 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="163" y="0" key="SettingsEditor/0.0.1366.768@0.0.1366.768" timestamp="1604829469884" />
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1610564842016">
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog" timestamp="1610706677963">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1610564842016" />
-    <state x="345" y="94" width="607" height="643" key="find.popup" timestamp="1610573515173">
+    <state x="379" y="208" key="com.intellij.ide.util.TipDialog/0.0.1366.768@0.0.1366.768" timestamp="1610706677963" />
+    <state x="345" y="94" width="607" height="643" key="find.popup" timestamp="1610707096480">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="345" y="94" width="607" height="643" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1610573515173" />
+    <state x="345" y="94" width="607" height="643" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1610707096480" />
     <state x="65" y="4" key="new project wizard" timestamp="1604062959252">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

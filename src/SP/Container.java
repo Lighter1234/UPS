@@ -59,7 +59,14 @@ public class Container {
         try {
             ms.sendMessage("create|" + lobbyName + "|" + username);
         } catch (IOException e) {
-            e.printStackTrace();
+            Object[] options = {"OK"};
+            JOptionPane.showOptionDialog(panel,
+                    "Error server unreachable!","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
         }
 
     }
@@ -81,7 +88,14 @@ public class Container {
         try {
             ms.sendMessage("join|" + lobbyName + "|" + username);
         } catch (IOException e) {
-            e.printStackTrace();
+            Object[] options = {"OK"};
+            JOptionPane.showOptionDialog(panel,
+                    "Error server unreachable!","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
         }
     }
 
@@ -100,7 +114,14 @@ public class Container {
         try {
             ms.sendMessage("refresh|"+username);
         } catch (IOException e) {
-            e.printStackTrace();
+            Object[] options = {"OK"};
+            JOptionPane.showOptionDialog(panel,
+                    "Error server unreachable!","Error",
+                    JOptionPane.PLAIN_MESSAGE,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,
+                    options,
+                    options[0]);
         }
     }
 
@@ -153,6 +174,7 @@ public class Container {
     public void incrementVictoryCounter(){
         this.amountOfVictories++;
         System.out.println("Victories:" + amountOfVictories);
+        this.scoreLabel.setText("Victories: " + amountOfVictories + " Loses: " + amountOfLoses);
         this.headerPanel.repaint();
         this.frame.repaint();
     }
